@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
+}
+a {
+	text-decoration: none;
+}
+.container {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+p {
+	color: rgb(35, 165, 177);
+	font-size: 1.4rem;
+	margin-top: 5px;
+	line-height: 2.5rem;
+	font-weight: 300;
+	letter-spacing: 0.05rem;
+}
+.section-title {
+	font-size: 4rem;
+	font-weight: 300;
+	color: rgb(84, 192, 200);
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	text-align: center;
+}
+.section-title span {
+	color: crimson;
+}
+
+.cta {
+	display: inline-block;
+	padding: 10px 30px;
+	color: white;
+	background-color: transparent;
+	border: 2px solid crimson;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	margin-top: 30px;
+	transition: 0.3s ease;
+	transition-property: background-color, color;
+}
+.cta:hover {
+	color: white;
+	background-color: crimson;
+}
+.brand h1 {
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: white;
+}
+.brand h1 span {
+	color: crimson;
+}
+
+/* Header section */
+#header {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: auto;
+}
+#header .header {
+	min-height: 8vh;
+	background-color: rgba(31, 30, 30, 0.24);
+	transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	max-width: 1300px;
+	padding: 0 10px;
+}
+#header .nav-list ul {
+	list-style: none;
+	position: absolute;
+	background-color: rgb(31, 30, 30);
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+	left: 0%;
+}
+#header .nav-list ul a {
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding: 20px;
+	display: block;
+}
+#header .nav-list ul a::after {
+	content: attr(data-after);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	color: rgba(240, 248, 255, 0.021);
+	font-size: 13rem;
+	letter-spacing: 50px;
+	z-index: -1;
+	transition: 0.3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+	transform: translate(-50%, -50%) scale(1);
+	letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+	color: crimson;
+}
+#header .hamburger {
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	border: 3px solid rgb(254, 251, 251);
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+	transform: scale(0.8);
+	margin-right: 20px;
+}
+#header .hamburger:after {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid rgb(241, 244, 246);
+	animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+	height: 2px;
+	width: 30px;
+	position: relative;
+	background-color: rgb(232, 235, 238);
+	z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: rgb(244, 235, 235);
+	transition: 0.3s ease;
+	transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+	top: 8px;
+	
+}
+#header .hamburger .bar::before {
+	bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+	bottom: 0;
+}
+#header .hamburger.active .bar::after {
+	top: 0;
+}
+/* End Header section */
+
+/* Hero Section */
+#hero {
+	background-image: url(./img/hero-bg.png);
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+	background-color: rgb(79, 78, 78);
+}
+#hero::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgb(107, 167, 160);
+    background-image:url('https://img.freepik.com/free-photo/abstract-blur-defocused-pharmacy-drug-store_1203-9459.jpg?size=626&ext=jpg&ga=GA1.1.729727245.1728398225&semt=ais_hybrid-rr-similar');
+	background-size: cover;
+	background-repeat: no repeat;
+	background-attachment: fixed;
+	overflow: hidden;
+	opacity: 0.7;
+	z-index: -1;
+}
+#hero .hero {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 50px;
+	justify-content: flex-start;
+	
+	
+}
+#hero h1 {
+	display: block;
+	width: fit-content;
+	font-size: 4rem;
+	position: relative;
+	color: rgb(107, 167, 160);
+	animation: text_reveal 0.5s ease forwards;
+	animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+	animation-delay: 1s;
+	
+}
+#hero h1:nth-child(2) {
+	animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+	animation: text_reveal_name 0.5s ease forwards;
+	animation-delay: 3s;
+}
+#hero h1 span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-color: crimson;
+	animation: text_reveal_box 1s ease;
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(1) span {
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(2) span {
+	animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+	animation-delay: 2.5s;
+}
+
+/* End Hero Section */
+
+/* Services Section */
+#services .services {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#services .service-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#services .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#services .service-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#services .service-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#services .service-bottom .icon {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 20px;
+}
+#services .service-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#services .service-item p {
+	color: white;
+	text-align: left;
+}
+/* End Services Section */
+
+/* Projects section */
+#projects .projects {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#projects .projects-header h1 {
+	margin-bottom: 50px;
+}
+#projects .all-projects {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+#projects .project-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 80%;
+	margin: 20px auto;
+	overflow: hidden;
+	border-radius: 10px;
+}
+#projects .project-info {
+	padding: 30px;
+	flex-basis: 50%;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	color: white;
+}
+#projects .project-info h1 {
+	font-size: 4rem;
+	font-weight: 500;
+}
+#projects .project-info h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin-top: 10px;
+}
+#projects .project-info p {
+	color: white;
+}
+#projects .project-img {
+	flex-basis: 50%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+#projects .project-img:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.7;
+}
+#projects .project-img img {
+	transition: 0.3s ease transform;
+}
+#projects .project-item:hover .project-img img {
+	transform: scale(1.1);
+}
+/* End Projects section */
+
+/* About Section */
+#about .about {
+	flex-direction: column-reverse;
+	text-align: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 20px;
+}
+#about .col-left {
+	width: 250px;
+	height: 360px;
+}
+#about .col-right {
+	width: 100%;
+}
+#about .col-right h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	margin-bottom: 10px;
+}
+#about .col-right p {
+	margin-bottom: 20px;
+}
+#about .col-right .cta {
+	color: black;
+	margin-bottom: 50px;
+	padding: 10px 20px;
+	font-size: 2rem;
+}
+#about .col-left .about-img {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	border: 10px solid white;
+}
+#about .col-left .about-img::after {
+	content: '';
+	position: absolute;
+	left: -33px;
+	top: 19px;
+	height: 98%;
+	width: 98%;
+	border: 7px solid crimson;
+	z-index: -1;
+}
+/* End About Section */
+
+/* contact Section */
+#contact .contact {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 90%;
+
+}
+#contact .contact-items {
+	/* max-width: 400px; */
+	width: 100%;
+}
+#contact .contact-item {
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 18px 0 #0000002c;
+	transition: 0.3s ease box-shadow;
+
+}
+#contact .contact-item:hover {
+	box-shadow: 0px 0px 5px 0 #0000002c;
+}
+#contact .icon {
+	width: 70px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+#contact .contact-info h1 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+#contact .contact-info h2 {
+	font-size: 1.3rem;
+	line-height: 2rem;
+	font-weight: 500;
+}
+/*End contact Section */
+
+/* Footer */
+#footer {
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+#footer .footer {
+	min-height: 200px;
+	flex-direction: column;
+	padding-top: 50px;
+	padding-bottom: 10px;
+}
+#footer h2 {
+	color: white;
+	font-weight: 500;
+	font-size: 1.8rem;
+	letter-spacing: 0.1rem;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#footer .social-icon {
+	display: flex;
+	margin-bottom: 30px;
+}
+#footer .social-item {
+	height: 50px;
+	width: 50px;
+	margin: 0 5px;
+}
+#footer .social-item img {
+	filter: grayscale(1);
+	transition: 0.3s ease filter;
+}
+#footer .social-item:hover img {
+	filter: grayscale(0);
+}
+#footer p {
+	color: white;
+	font-size: 1.3rem;
+}
+/* End Footer */
+
+/* Keyframes */
+@keyframes hamburger_puls {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+}
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: white;
+	}
+}
+@keyframes text_reveal_name {
+	100% {
+		color: crimson;
+		font-weight: 500;
+	}
+}
+/* End Keyframes */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+	.cta {
+		font-size: 2.5rem;
+		padding: 20px 60px;
+	}
+	h1.section-title {
+		font-size: 6rem;
+	}
+
+	/* Hero */
+	#hero h1 {
+		font-size: 7rem;
+	}
+	/* End Hero */
+
+	/* Services Section */
+	#services .service-bottom .service-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+	/* End Services Section */
+
+	/* Project */
+	#projects .project-item {
+		flex-direction: row;
+	}
+	#projects .project-item:nth-child(even) {
+		flex-direction: row-reverse;
+	}
+	#projects .project-item {
+		height: 400px;
+		margin: 0;
+		width: 100%;
+		border-radius: 0;
+	}
+	#projects .all-projects .project-info {
+		height: 100%;
+	}
+	#projects .all-projects .project-img {
+		height: 100%;
+	}
+	/* End Project */
+
+	/* About */
+	#about .about {
+		flex-direction: row;
+	}
+	#about .col-left {
+		width: 600px;
+		height: 400px;
+		padding-left: 60px;
+	}
+	#about .about .col-left .about-img::after {
+		left: -45px;
+		top: 34px;
+		height: 98%;
+		width: 98%;
+		border: 10px solid crimson;
+	}
+	#about .col-right {
+		text-align: left;
+		padding: 30px;
+	}
+	#about .col-right h1 {
+		text-align: left;
+	}
+	/* End About */
+
+	/* contact  */
+	#contact .contact {
+		flex-direction: column;
+		padding: 100px 0;
+		align-items: center;
+		justify-content: center;
+		min-width: 20vh;
+	}
+	#contact .contact-items {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		margin: 0;
+	}
+	#contact .contact-item {
+		width: 30%;
+		margin: 0;
+		flex-direction: row;
+	}
+	#contact .contact-item .icon {
+		height: 100px;
+		width: 100px;
+	}
+	#contact .contact-item .icon img {
+		object-fit: contain;
+	}
+	#contact .contact-item .contact-info {
+		width: 100%;
+		text-align: left;
+		padding-left: 20px;
+	}
+	/* End contact  */
+}
+/* End Media Query For Tablet */
+
+/* Media Query For Desktop */
+@media only screen and (min-width: 1200px) {
+	/* header */
+	#header .hamburger {
+		display: none;
+	}
+	#header .nav-list ul {
+		position: initial;
+		display: block;
+		height: auto;
+		width: fit-content;
+		background-color: transparent;
+	}
+	#header .nav-list ul li {
+		display: inline-block;
+	}
+	#header .nav-list ul li a {
+		font-size: 1.8rem;
+	}
+	#header .nav-list ul a:after {
+		display: none;
+	}
+	/* End header */
+
+	#services .service-bottom .service-item {
+		flex-basis: 22%;
+		margin: 1.5%;
+	}
+}
+/* End  Media Query For Desktop */
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>P</span>harminga</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="/view medicine.html" data-after="View medicine">View medicine</a></li>
+            <li><a href="/profile.html" data-after="Profile">Profile</a></li>
+            <li><a href="/about us.html" data-after="About us">About us</a></li>
+            <li><a href="/contact us.html" data-after="Contact us">Contact us</a></li>
+            <li><a href="/Exit.html" data-after="Exit">Exit</a></li>
+            
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>WELCOME <span></span></h1>
+        <h1>TO PHARMINGA <span></span></h1>
+        <h2>The pharmacy inventory management system <span></span></h2>
+        <a href="/learn more.html" type="button" class="cta">Learn more</a>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section  -->
+
+  <!-- Service Section -->
+  <section id="services">
+    <div class="services container">
+      <div class="service-top">
+        <h1 class="section-title">Serv<span>i</span>ces</h1>
+        <p>A pharmacy inventory management system (PIMS) is a software solution designed to streamline the management of pharmaceutical products within a pharmacy. It helps ensure that medications are properly tracked, stocked, and dispensed, enhancing operational efficiency and compliance with regulations. </p>
+      </div>
+      <div class="service-bottom">
+        <div class="service-item">
+          <div class="icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAbFBMVEX///8AAADX19fT09NTU1NXV1enp6d/f3+rq6snJycrKyv6+voaGhqdnZ1OTk6WlpYWFhZLS0sMDAwyMjKLi4uzs7M+Pj7l5eURERF0dHRpaWny8vJfX1/IyMiRkZE6Ojrq6uq/v79ra2t5eXliLVSJAAAFFklEQVR4nO2d23aqMBBAAauiFC8oovXe8///eKwRSDDkgpMJtrOfulgBZlcgE5hAEEgZLLOwl2TLgTxiOceeavyQHS1EVr6jVbEy9yh8x6rmYiwy8B2qmohEesZfFjnFejbSxsO2KA58q3W5dGOwo9MLIiarjCoRfmncJpLzrSqRGDqqDqvsy87zzC9NJnKPacK3KvurLAn0uBYJPsrWBb80kppMhS1G5eIhfFTPq8RjDcuytXBsBYlkxVz8z1dH1lK3jxhApPqHazlrN9zAPBMaooqIx5aeSL9FTyIn7ZYF1votehJZjayY9lbEHSTCrfLrRLbTdhavBLlQbLjMGiBFVL3vKHwBVZ7F7xxDZP/CzQplnoUt8sqJZLRdNJEXji1lBo8u4goSYZAIOCTCIBFwSIRBIuCQCINEwCERBomAQyIMEgGHRBgkAg6JMEjkTn4Os6HlU7g2fIrM760XMCYeReaP5odOgTfxJ1J6hNtukTfwJlJ5hFnH0EV8idQe4aZr7AKeRDiP8No5eB4/IrxH2j14HgyRYtB4ZubAA0Ek2tzO5x2vovSIDx9GfDeqk52LXNgD6WVtovJIZqEx/3BFdo+FlYny9xibezRqBZ2LVJVWDxP1+fFpIzLzIxLOEq1HYOMhlr6jHVrMRHe96vEvcuFim53qv+XX3R6fI0Ekr6OR9x+JRWHEWFgToUOUmrT2g/nX0Igddj8iN4Hqz2tQcq0nE3gPpKQxEq9GDjywsl/BxIUHWhrPmTjxwBuPVCZuPBAHVg8TRx6YI8TisMg2MONaCXTLlEEi4JAIg0TAIREGiYBDIgwSAYdEGCQCjl+RIs739jFL8SmSHG6Nt6MuYT/jUSR5TG/P9U0N8CdSethPbpfiTaTyePOCgdrjvUs4OI+3LqrhPT7fuMxJ8DDfmRIEkeI0joXSBxceCCLpz3zpCbdJpUcx3IZGLHZiTuBc5PrYb7VNtYfFxP2V8DM7FykXlibq46r11U4y1qgi1ZtAmInm/LCati9UrDkXqV6qdTfRnec2HsiVD2m940WkvV6dbUS+UEUCrnBpUf88Ldfd3MIjE3pS9yLyEqy2/mNkePW9XdHFigGEDlFm0t4PJleDl8zdODbKCzFSlGcTsP68BiXXapo48EBKGkUTFx5Y2S9v4sQDLY2vTdx44I1HShNHHogDq+SeEE4ceaCOEPOvwxzqxuITdO+XQSLgkAiDRMAhEQaJgEMiDBIBh0QYJAKOV5H9engw+cSACT5FWLX8zOQjA3o8ipTzfMb6pgb4E6nmK026Rd7Amwg376pj6CK+RDiPt/5F+Hlwa31zA/yI8B4fb3zVcuCB8cRqvpkOhadLSo99bvbdiCv2g57H88+5oUdq/ID6U5yu5VyknMFemfAeT7261cNQIUy85+xzAw+7j/nhPp6uv4Ey13v0uWCAqy5JtR59LuE4cntOdR59LqrhazhCrhpAnr33uMxJNNF4/MyDNSx9+MQuPJObAI2mOFBSlCcTeA+kXKth4sADK2lMXXugZb+pYw+8ND5164E4HkmdemAOrO7Fcd+OPFBHiPtrDvQGVgl075dBIuCQCINEwCERBomAQyIMEgGHRBgkAg6JMEgEHBJh/G6RbOIBF5819wqJcKuQCCQkwq1CIpBAiMTjHhADiPQGEvlNImuzujcc1i+I9BMS6Rt/UKTwHaqai7GIXTUlNjZvgDxaVSHikh318dcMlj1VyWYDecT/AX1odV8Zq0tJAAAAAElFTkSuQmCC"/></div>
+			<h2>Key Features</h2>
+          <p>User-Friendly Interface: Easy navigation and accessibility for pharmacy staff.Reporting and Analytics: Detailed reports on sales trends, stock levels, and financial performance.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="data:image/png;base64,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" /></div>
+          <h2>Benefits</h2>
+          <p>Efficiency: Reduces manual errors and saves time in inventory management.Regulatory Compliance: Helps maintain compliance with health regulations and reporting requirements.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGyIivz8x8X-2K_wikXGP5K_qxh3eTDx-olEvosXsPDRZm5qlxzb5fwETVGsifK5SdRy8&usqp=CAU" /></div>
+          <h2>Implementation Process</h2>
+          <p>Assessment: Initial evaluation of pharmacy needs.
+			Customization: Tailoring the system to fit specific operational requirements. Deployment: Steps for installation.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://png.pngtree.com/png-clipart/20230924/original/pngtree-flat-icon-for-customer-support-a-symbol-for-social-assistance-vector-png-image_12754404.png" /></div>
+          <h2>User Support</h2>
+          <p>Training: Information on training sessions for staff on how to use the system effectively.
+			Technical Support: Details about customer support availability and how to contact the support team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Service Section -->
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="projects container">
+      <div class="projects-header">
+        <h1 class="section-title">Recent <span>Findings</span></h1>
+      </div>
+      <div class="all-projects">
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Main Modules</h1>
+            <h2>of the pharmacy management system</h2>
+            <p>A pharmacy inventory management system typically includes several key modules to ensure efficient operations.
+				 Here are the main modules:Integration,Return management,compliance management,User management,Inventory control,etc.</p>
+          </div>
+          <div class="project-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_HSuMA5nCsUB8VVteh0bfd2oyiyjrtMrJyA&s" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Mandatory Features</h1>
+            <h2>of the pharmacy management system</h2>
+            <p>A pharmacy inventory management system should include the following mandatory features:User acess control,integration capabilities,Regularity compliance
+				Implementing these features can significantly improve efficiency, accuracy, and compliance in pharmacy operations.
+			</p>
+          </div>
+          <div class="project-img">
+            <img src="https://media.licdn.com/dms/image/C5112AQFlXCvWGbT7Zw/article-cover_image-shrink_720_1280/0/1557994516580?e=2147483647&v=beta&t=eR12i37Wluq8kepvgr1j2RSebvrhBx-fENKFCrx76YU" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Advantages</h1>
+            <h2>of the pharmacy management system</h2>
+            <p>A pharmacy inventory management system offers several advantages:Improved accuracy,Enhanced Efficiency,Real-Time Monitoring,Cost Savings,
+		data-driven Insights,etc.
+		</p>
+			</div>
+          <div class="project-img">
+            <img src="https://d2ms8rpfqc4h24.cloudfront.net/the_main_advantages_of_pharmacy_managemen_software_1dec2f32d4.jpg" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Development Process</h1>
+            <h2>of the pharmacy management system</h2>
+            <p>The development process of a pharmacy inventory management system typically involves several key phases:
+				Requirements Gathering,System Design,Technology selection,Development,etc. Following this structured process helps ensure that the pharmacy inventory management system is functional, user-friendly, and compliant with regulatory standards.
+			</p>
+          </div>
+          <div class="project-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSli5n3AirpAWrdWHUtw0zM_3CXQoqjpG_3Sg&s" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Changing landscape</h1>
+            <h2>of the pharmacy management system</h2>
+            <p>The landscape of pharmacy inventory management systems is evolving rapidly due to several factors:
+				Technology Integration,cloud-Based Solution,Automation and AI,Mobile Acesses,Regulatory Changes,Data Analytics,Sustainability Practices,etc.
+			</p>
+          </div>
+          <div class="project-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIkwLS_Y_IVytsAzwZkO_zqmyu2AU3WXtjjr2jUSJq79GqjPcRJEgFydTFGFNdNWDcVyo&usqp=CAU" alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Projects Section -->
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+1 234 123 1234</h2>
+            <h2>+1 234 123 1234</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>info@gmail.com</h2>
+            <h2>abcd@gmail.com</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>kathora road,Amravati,India</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>R</span>eference </h1>
+		<div>
+			<a href="^The pharmacy Technician">visit pharmacy technicial.com </a>
+		</div>
+		<div>
+			<a href="worktext">visit worktext.com</a>
+		</div>
+      </div>
+    </div>
+  </section>
+  <!-- End Footer -->
+  <script>
+    const navbar = document.querySelector('nav');
+const navbarToggle = document.createElement('button');
+navbarToggle.textContent = 'Menu';
+navbarToggle.classList.add('navbar-toggle');
+navbar.insertBefore(navbarToggle, navbar.firstChild);
+
+navbarToggle.addEventListener('click', () => {
+  navbar.classList.toggle('show');
+});
+  </script>
+</body>
+
+</html>

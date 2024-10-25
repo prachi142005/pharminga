@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('https://pharmaceutical-journal.com/wp-content/uploads/2021/04/Pharmacists-thank-you-927x617.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.exit-container {
+    background-color: rgb(227, 236, 240);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #e2ebee;
+    border-radius: 4px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button#stay {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+button#leave {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exit Page</title>
+
+</head>
+<body>
+    <div class="exit-container">
+        <h1>Wait! Are you sure you want to leave?</h1>
+        <p>Your feedback is important to us. We hope you liked our website.</p>
+        <textarea placeholder="Your feedback..."></textarea>
+        <div class="buttons">
+            <button id="stay" class="button">Stay on the site</button>
+            <button id="leave">Leave anyway</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("stay").onclick = function() {
+  window.location.href = "yourfile.html"; // Change this to the file you want to open
+};
+
+document.getElementById("leave").onclick = function() {
+  const userConfirmed = confirm("Are you sure you want to leave? Click 'OK' to leave, or 'Cancel' to stay.");
+  if (userConfirmed) {
+      window.location.href = "goodbye.html"; // Redirect to goodbye page
+  } else {
+      window.location.href = "yourfile.html"; // Change this to the file you want to open
+  }
+};
+
+// Optional: Prevent page unload
+window.onbeforeunload = function() {
+  return "Are you sure you want to leave?";
+};
+    </script>
+</body>
+</html>

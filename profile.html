@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #bbf6f6;
+    color: #333;
+    background-image: url('https://img.freepik.com/free-photo/medicine-capsules-global-health-with-geometric-pattern-digital-remix_53876-126742.jpg?w=996&t=st=1728891840~exp=1728892440~hmac=e4a11cc252e6deb27db6750a4bde918ffefe7d86c90448fcad47f2d6fe3d7bfa');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
+
+.container {
+    max-width: 500px;
+    margin:  0 auto;
+    padding: 70px;
+    background: rgb(242, 246, 246);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height:490px;
+    position: relative;
+    top:20px;
+
+}
+
+h1 {
+    text-align: left;
+    color: #2194cd;
+    margin: 1px;
+    font-weight: bolder;
+    text-decoration: underline;
+    
+}
+ 
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    border-bottom: 2px solid #40b2c2;
+    padding-bottom: 20px;
+    
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-details {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #0e3252;
+    outline: none;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #083388;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #064053;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Management System - Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Pharmacy Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="/dashboard.html">Home</a></li>
+                <li><a href="/contact us.html">Contact Us</a></li>
+                <li><a href="/Exit.html">Exit</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="container">
+        <h1>Profile</h1>
+        <div class="profile-info">
+            <div class="profile-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeJrOXZEayS9-m5Xu1vvSaszok1G2oHaUKbQ&s"alt="profile image">
+            </div>
+            
+            <div class="profile-details">
+                <label for="userRole">User Role:</label>
+                <select id="userRole">
+                    <option value="Administrator">Administrator</option>
+                    <option value="Administrator">Pharmacist</option>
+                    </select>
+                     <label for="name">Name:</label>
+                    <input type="text" id="name" value="BTech Days">
+                    <label for="dob">DOB (Date of Birth):</label>
+                    <input type="date" id="dob" value="1991-07-18">
+                    <label for="mobileNo">Mobile No:</label>
+                    <input type="tel" id="mobileNo" value="5656562323">
+                    <label for="emailAddress">Email Address:</label>
+                    <input type="email" id="emailAddress" value="btechdays.care@gmail.com">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" value="btechdays">
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="button" id="updateButton">Update</button>
+                <button type="button" id="resetButton">Reset</button>
+            </div>
+        </div>
+    
+        <script>
+            document.getElementById("updateButton").addEventListener("click", function() {
+    // Handle update logic here
+    alert("Update button clicked!");
+});
+
+document.getElementById("resetButton").addEventListener("click", function() {
+    // Handle reset logic here
+    alert("Reset button clicked!");
+    function handleButtonClick(event) {
+    const buttonText = event.target.textContent;
+
+    if (buttonText === "Home") {
+        // Redirect to home page
+        window.location.href = "index.html"; // Replace with your home page URL
+    } else if (buttonText === "Contact Us") {
+        // Open contact form or display contact information
+        alert("Contact Us clicked!"); // Replace with your contact handling logic
+    }
+}
+
+const buttons = document.querySelectorAll("nav ul li a");
+buttons.forEach(button => button.addEventListener("click", handleButtonClick));
+});
+        </script>
+    </body>
+    </html>
+    
